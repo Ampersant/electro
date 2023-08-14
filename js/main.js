@@ -12,7 +12,7 @@
 		e.stopPropagation();
 	});
 
-	/////////////////////////////////////////
+	///////////////////////////////////////// 
 
 	// Products Slick
 	$('.products-slick').each(function() {
@@ -145,6 +145,25 @@
 			priceSlider.noUiSlider.set([null, value]);
 		}
 	}
+	// Logic categories
+	$(document).ready(function(){
+		$('[data-toggle="tab"]').on('click', function(e){
+			let cat_id = $(this).data('id');
+			$.ajax({
+				type: 'GET',
+				data: {name: cat_id},
+				dataType: 'json',
+				url: 'http://localhost/electro/services/js-service/category-link.php',
+				success: function(data) {
+					$('.tab-pane').html(data);
+				  },
+				  error: function () {
+					alert('Error');
+				}
+			})
+		})
+		
+	});
 
 	// Price Slider
 	var priceSlider = document.getElementById('price-slider');
