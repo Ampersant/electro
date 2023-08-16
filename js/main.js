@@ -126,44 +126,26 @@
 	});
 
 	var priceInputMax = document.getElementById('price-max'),
-			priceInputMin = document.getElementById('price-min');
+	priceInputMin = document.getElementById('price-min');
 
-	priceInputMax.addEventListener('change', function(){
-		updatePriceSlider($(this).parent() , this.value)
-	});
+priceInputMax.addEventListener('change', function(){
+updatePriceSlider($(this).parent() , this.value)
+});
 
-	priceInputMin.addEventListener('change', function(){
-		updatePriceSlider($(this).parent() , this.value)
-	});
+priceInputMin.addEventListener('change', function(){
+updatePriceSlider($(this).parent() , this.value)
+});
 
-	function updatePriceSlider(elem , value) {
-		if ( elem.hasClass('price-min') ) {
-			console.log('min')
-			priceSlider.noUiSlider.set([value, null]);
-		} else if ( elem.hasClass('price-max')) {
-			console.log('max')
-			priceSlider.noUiSlider.set([null, value]);
-		}
-	}
-	// Logic categories
-	$(document).ready(function(){
-		$('[data-toggle="tab"]').on('click', function(e){
-			let cat_id = $(this).data('id');
-			$.ajax({
-				type: 'GET',
-				data: {name: cat_id},
-				dataType: 'json',
-				url: 'http://localhost/electro/services/js-service/category-link.php',
-				success: function(data) {
-					$('.tab-pane').html(data);
-				  },
-				  error: function () {
-					alert('Error');
-				}
-			})
-		})
-		
-	});
+function updatePriceSlider(elem , value) {
+if ( elem.hasClass('price-min') ) {
+	console.log('min')
+	priceSlider.noUiSlider.set([value, null]);
+} else if ( elem.hasClass('price-max')) {
+	console.log('max')
+	priceSlider.noUiSlider.set([null, value]);
+}
+}
+	
 
 	// Price Slider
 	var priceSlider = document.getElementById('price-slider');

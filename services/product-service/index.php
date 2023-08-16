@@ -18,6 +18,22 @@
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
+    function get_all_prod_new_by_category($category_id){
+        global $pdo;
+        $sql = "SELECT * FROM products WHERE category_id=:cid AND new=1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['cid' => $category_id]);
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
+    function get_all_prod_new(){
+        global $pdo;
+        $sql = "SELECT * FROM products WHERE new=1 ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
     function get_prod_by_id($id){
         global $pdo;
         $sql = "SELECT * FROM products WHERE id=:id ";

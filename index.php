@@ -258,14 +258,14 @@
 								<ul class="section-tab-nav tab-nav">
 									<?php 
 										$cat_names = get_cat_names();
-										$counter = 0;
-										foreach ($cat_names as $key => $value) {
-											if ($counter == 0) { ?>
-												<li class="active"><a data-toggle="tab" data-id="<?=$value['id']?>" href="?category=<?=$value['name']?> "><?= $value ?></a></li>
-										<?php	$counter++; continue;
+										?>
+
+											<li class="active"><a class="a1" data-toggle="tab" data-id="all" href="#">All</li>
+										<?php foreach ($cat_names as $key => $value) { ?>
+											<li><a class="a1" data-toggle="tab" data-id="<?= $key+1; ?>" href="#"><?= $value ?></a></li>
+										<?php
 										}?>
-										<li><a data-toggle="tab" href="#tab1"><?= $value ?></a></li>
-										<?php }
+										<?php 
 									?> 
 								</ul>
 							</div>
@@ -275,13 +275,13 @@
 
 					<!-- Products tab & slick -->
 					<div class="col-md-12">
-						<div class="row">
+						<div id="slicktab1" class="row">
 							<div class="products-tabs">
 								<!-- tab -->
 								<div id="tab1" class="tab-pane active">
-									<div class="products-slick" data-nav="#slick-nav-1">
+									<div id="slicknav1" class="products-slick" data-nav="#slick-nav-1">
 										<!-- product -->
-										<?php $all_prods = get_all_prod();
+										<?php $all_prods = get_all_prod_new();
 												foreach ($all_prods as $key => $value) { ?> 
 													<div class="product">
 														<div class="product-img">
@@ -1012,6 +1012,7 @@
 		<script src="js/nouislider.min.js"></script>
 		<script src="js/jquery.zoom.min.js"></script>
 		<script src="js/main.js"></script>
+		<script src="js/slick-nav.js"></script>
 		
 
 	</body>
