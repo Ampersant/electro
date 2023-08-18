@@ -12,5 +12,6 @@
 </head>
 <body>
     <?php var_dump($all); ?> 
+    <button href="google.com">HREF TEST</button>
 </body>
 </html>
