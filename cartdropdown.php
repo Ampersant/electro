@@ -1,33 +1,40 @@
-<div class="cart-dropdown">
-										<div class="cart-list">
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product01.png" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
+<div class="modal-body">
+    <?php if (!empty($_SESSION['cart'])): ?>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($_SESSION['cart'] as $id => $item): ?>
+                <tr>
+                 <td><a href="#"> <img style="max-width: 30%" src="img/product01.png" alt="<?= $item['name']; ?>"> </a></td>
+                    <td><a href="#"><?= $item['name']; ?></a></td>
+                    <td><?= $item['price']; ?></td>
+                    <td><?= $item['qty'] ?></td>
+                </tr>
+            <?php endforeach; ?>
 
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product02.png" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
-										</div>
-										<div class="cart-summary">
-											<small>3 Item(s) selected</small>
-											<h5>SUBTOTAL: $2940.00</h5>
-										</div>
-										<div class="cart-btns">
-											<a href="#">View Cart</a>
-											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
-										</div>
+            <tr>
+                <td colspan="4" align="right">Products: <span id="modal-cart-qty"><?= $_SESSION['cart.qty'] ?></span>
+                    <br> Sum: <?= $_SESSION['cart.sum'] ?> $.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>Корзина пуста...</p>
+    <?php endif; ?>
+</div>
+<div class="modal-footer">
+    <?php if (!empty($_SESSION['cart'])): ?>
+        <a class="primary-btn" href="#" id="gen-order">Make an order</a>
+        <a class="primary-btn" href="#" id="clear-cart">Clear the cart</a>
+    <?php endif; ?>
+    <a class="primary-btn" href="#" data-dismiss="modal">Close</a>
+
 </div>

@@ -110,7 +110,11 @@
 									<a id="get-cart" data-toggle="modal" data-target="#cart-modal" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
 										<span>Your Cart</span>
-										<div class="qty">3</div>
+										<div class="qty"><?php if (isset($_SESSION['cart.qty'])) {
+											echo $_SESSION['cart.qty'];
+										}else{
+											echo "0";
+										} ?></div>
 									</a>
 								</div>
 								<!-- /Cart -->

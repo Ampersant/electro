@@ -20,6 +20,7 @@ $(function() {
             success: function (res) {
                 if (res.code == 'ok') {
                     showCart(res.answer);
+                    $('.qty').text(res.cartQty);
                 } else {
                     alert(res.answer);
                 }

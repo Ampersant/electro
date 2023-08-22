@@ -13,11 +13,11 @@ if (isset($_GET['cart'])) {
             if (!$res) {
                 echo json_encode(['code' => 'error', 'answer' => 'Error product']);
             } else {
-                add_to_cart($res[0]);
+                $qty = add_to_cart($res[0]);
                 ob_start();
                 require $_SERVER['DOCUMENT_ROOT'] . '/electro/cartdropdown.php';
                 $cart = ob_get_clean();
-                echo json_encode(['code' => 'ok', 'answer' => $cart]);
+                echo json_encode(['code' => 'ok', 'answer' => $cart, 'cartQty' => $qty]);
             }
             break;
 
