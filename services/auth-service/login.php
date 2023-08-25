@@ -12,14 +12,19 @@
                 session_start();
                 setcookie('auth', true, time() + (86400 * 30), "/");
                 $_SESSION['is_admin'] = $user[0]['is_admin'];
+            header("Location: ../../index.php");
+
+                
             }else {
                 session_start();
                 $_SESSION['auth'] = true;
                 $_SESSION['is_admin'] = $user[0]['is_admin'];
+            header("Location: ../../index.php");
+
             }
             
         }else{
-            header("Location: другая_страница.php");
+            header("Location: ../../login.php");
             exit;
         }
     }
