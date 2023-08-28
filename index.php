@@ -2,7 +2,6 @@
 			require_once $_SERVER['DOCUMENT_ROOT'] . '/electro/services/product-service/index.php'; 
 			require_once $_SERVER['DOCUMENT_ROOT'] . '/electro/services/product-service/category.php';
 			session_start();
-
 		?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,8 +53,14 @@
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-						<?php if (isset($_SESSION['auth'])  || isset($_COOKIE['auth'])) {
-							if ($_SESSION['is_admin']) { ?> 
+						<?php if (isset($_SESSION['auth'])) {
+							if ($_SESSION['is_admin'] == true) { ?> 
+								<li><a href="http://localhost/electro/AdminLTE-3.2.0/index.html"><i class="fa fa-user-o"></i> My Account</a></li>
+							<?php }else { ?>
+								<li><a href="http://localhost/electro/checkout.html"><i class="fa fa-user-o"></i> My Account</a></li>
+							<?php }
+						}elseif (isset($_COOKIE['auth'])) {
+							if ($_COOKIE['is_admin'] == true) { ?> 
 								<li><a href="http://localhost/electro/AdminLTE-3.2.0/index.html"><i class="fa fa-user-o"></i> My Account</a></li>
 							<?php }else { ?>
 								<li><a href="http://localhost/electro/checkout.html"><i class="fa fa-user-o"></i> My Account</a></li>

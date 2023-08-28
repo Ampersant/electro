@@ -32,7 +32,7 @@
 </div>
 <div class="modal-footer">
     <?php if (!empty($_SESSION['cart'])): ?>
-        <a class="primary-btn" href="#" id="gen-order">Make an order</a>
+        <a class="primary-btn" href="http://localhost/electro/checkout.php" id="gen-order">Make an order</a>
         <a class="primary-btn" href="#" id="clear-cart">Clear the cart</a>
     <?php endif; ?>
     <a class="primary-btn" href="#" data-dismiss="modal">Close</a>

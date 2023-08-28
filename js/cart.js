@@ -82,17 +82,17 @@ $(function() {
         });
     });
 
-    $('#cart-modal .modal-cart-content').on('click', '#gen-order', function () {
-        $.ajax({
-            url: 'http://localhost/electro/services/js-service/cart.php',
-            type: 'GET',
-            data: {cart: 'order'},
-            success: function (res) {
-                showCart(res);
-            },
-            error: function () {
-                alert('Error add order');
-            }
-        });
-    });
+    // $('#cart-modal .modal-cart-content').on('click', '#gen-order', function () {
+    //     $.ajax({
+    //         url: 'http://localhost/electro/services/js-service/cart.php',
+    //         type: 'GET',
+    //         data: {cart: 'order'},
+    //         success: function (res) {
+    //             showCart(res);
+    //         },
+    //         error: function () {
+    //             alert('Error add order');
+    //         }
+    //     });
+    // });
 });

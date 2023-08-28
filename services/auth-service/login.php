@@ -11,7 +11,7 @@
             if (isset($_POST['remember_me'])) {
                 session_start();
                 setcookie('auth', true, time() + (86400 * 30), "/");
-                $_SESSION['is_admin'] = $user[0]['is_admin'];
+                setcookie('is_admin', $user[0]['is_admin'], time() + (86400 * 30), "/");
             header("Location: ../../index.php");
 
                 

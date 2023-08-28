@@ -108,8 +108,8 @@
 								<input class="input" type="password" name="password" placeholder="Enter Your Password">
 							</div>
 							<div class="input-checkbox">
-								<input type="checkbox" name="remember_me" id="remember">
-								<label for="shiping-address">
+								<input type="checkbox" value="true" name="remember_me" id="remember">
+								<label for="remember">
 									<span></span>
 									Remember me
 								</label>
