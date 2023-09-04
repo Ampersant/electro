@@ -281,9 +281,6 @@
 										<input class="input" type="text" name="s-last-name" placeholder="Last Name">
 									</div>
 									<div class="form-group">
-										<input class="input" type="email" name="s-email" placeholder="Email">
-									</div>
-									<div class="form-group">
 										<input class="input" type="text" name="s-address" placeholder="Address">
 									</div>
 									<div class="form-group">
@@ -294,9 +291,6 @@
 									</div>
 									<div class="form-group">
 										<input class="input" type="text" name="s-zip-code" placeholder="ZIP Code">
-									</div>
-									<div class="form-group">
-										<input class="input" type="tel" name="s-tel" placeholder="Telephone">
 									</div>
 								</div>
 							</div>
