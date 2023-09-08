@@ -1,5 +1,6 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . '/electro/db/db.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/electro/services/product-service/category.php';
     
     
     function get_all_prod(){
@@ -48,8 +49,23 @@
             $pc = (($obj[0]['price'] - $obj[0]['discount_price'])/$obj[0]['price']) * 100 ;
             $str = $pc . '%';
             return $str;
+        }        
+    }
+    function get_filter_prod($categories, $minPrice = 0, $maxPrice = 999999){
+        $res = [];
+        $cat_prods = [];
+        foreach ($categories as $key => $value) {
+            $temp = get_all_prod_by_category($value);
+            $cat_prods = array_merge($cat_prods, $temp);
         }
-        
+        foreach ($cat_prods as $key => $item) {
+            if ($item['price'] >= $minPrice && $item['price'] <= $maxPrice) {
+                $item['category_name'] = get_category_name_by_id($item['category_id']);
+                $res[] = $item;
+            }
+        }
+        return $res;
+
     }
     function add_to_cart($product)
         {
