@@ -2,6 +2,9 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . '/electro/db/db.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . '/electro/services/product-service/category.php';
     
+    use Pagerfanta\Adapter\ArrayAdapter;
+    use Pagerfanta\Pagerfanta;
+
     
     function get_all_prod(){
         global $pdo;
@@ -10,6 +13,17 @@
         $stmt->execute();
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $res;
+    }
+    function get_all_prod_paginated($itemsPerPage){
+        global $pdo;
+        $sql = "SELECT * FROM products";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $adapter = new ArrayAdapter($data);
+        $paginator = new Pagerfanta($adapter);
+        $paginator->setMaxPerPage($itemsPerPage); // Установите количество элементов на странице.
+
     }
     function get_all_prod_by_category($category_id){
         global $pdo;
@@ -54,17 +68,26 @@
     function get_filter_prod($categories, $minPrice = 0, $maxPrice = 999999){
         $res = [];
         $cat_prods = [];
-        foreach ($categories as $key => $value) {
-            $temp = get_all_prod_by_category($value);
-            $cat_prods = array_merge($cat_prods, $temp);
+        if ($categories == "all") {
+            $cat_prods = get_all_prod();
+        }else {
+            foreach ($categories as $key => $value) {
+                $temp = get_all_prod_by_category($value);
+                $cat_prods = array_merge($cat_prods, $temp);
+            }
         }
+        
         foreach ($cat_prods as $key => $item) {
             if ($item['price'] >= $minPrice && $item['price'] <= $maxPrice) {
                 $item['category_name'] = get_category_name_by_id($item['category_id']);
                 $res[] = $item;
             }
         }
-        return $res;
+        $adapter = new ArrayAdapter($res);
+        $paginator = new Pagerfanta($adapter);
+        $paginator->setMaxPerPage(5);
+        $paginator->setCurrentPage($_GET['page'] ?? 1); 
+        return $paginator;
 
     }
     function add_to_cart($product)

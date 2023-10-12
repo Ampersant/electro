@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    
     $("#price-slider").slider({
         range: true,
         min: 0,
@@ -78,6 +78,8 @@ $(document).ready(function() {
             
                     filteredProductsContainer.append(productElement);
                 });
+                const Oldnav = $('#oldnav');
+                const navPan = data.render();
             },
             error: function(xhr, textStatus, errorThrown) {
                 console.error('Ошибка при выполнении AJAX-запроса:', errorThrown);

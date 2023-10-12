@@ -4,12 +4,16 @@
 // Проверяем, что запрос был выполнен методом POST
 
     // Получаем данные из AJAX-запроса
-    $selectedCategories = $_GET["categories"];
+    if (isset($_GET["categories"])) {
+        $selectedCategories = $_GET["categories"];
+    }else {
+        $selectedCategories = "all";
+    }
+    
     $minPrice = $_GET["minPrice"];
     $maxPrice = $_GET["maxPrice"];
      
-    $total = get_filter_prod($selectedCategories,$minPrice,$maxPrice);   
-
+        $total = get_filter_prod($selectedCategories,$minPrice,$maxPrice);   
     header("Content-Type: application/json");
     echo json_encode($total);
 
