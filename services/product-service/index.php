@@ -14,6 +14,16 @@
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
+    function get_all_prod_json(){
+        global $pdo;
+        $sql = "SELECT * FROM products";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $json = json_encode($res);
+        return $json;
+    }
+    
     function get_all_prod_paginated($itemsPerPage){
         global $pdo;
         $sql = "SELECT * FROM products";

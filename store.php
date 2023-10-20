@@ -264,40 +264,12 @@
 						<!-- /store top filter -->
 
 						<!-- store products -->
-						<div id="filtered-products"><?php $all = get_all_prod(); 
-						foreach ($all as $key => $value) { ?> 
-							 <div class="col-md-4 col-xs-6">
-                            <div class="product">
-                                <div class="product-img">
-                                    <img src="./img/product01.png" alt="">
-                                    <div class="product-label">
-                                        <span class="sale"><?= $value['id'] ?></span>
-                                        <span class="new">NEW</span>
-                                    </div>
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category"><?= get_category_name_by_id($value['category_id']) ?></p>
-                                    <h3 class="product-name"><a href="#"><?= $value['name'] ?></a></h3>
-                                    <h4 class="product-price">$<?= $value['price'] ?><del class="product-old-price">$${product.oldPrice}</del></h4>
-                                    
-                                    <div class="product-btns">
-                                        <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                        <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                    </div>
-                                </div>
-                                <div class="add-to-cart">
-                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-						<?php }
-						?></div>
+						<?php include($_SERVER['DOCUMENT_ROOT'] . '/electro/services/product-service/paginator.php')?>
 						<!-- /store products -->
 
 						<!-- store bottom filter -->
 						
-						<div class="store-filter clearfix">
+						<!-- <div class="store-filter clearfix">
 							<span class="store-qty">Showing 20-100 products</span>
 							<ul id="oldnav" class="store-pagination">
 								<li>1</li>
@@ -306,7 +278,8 @@
 								<li><a href="#">4</a></li>
 								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
 							</ul>
-						</div>
+						</div> -->
+						
 						<!-- /store bottom filter -->
 					</div>
 					<!-- /STORE -->
